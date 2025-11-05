@@ -14,10 +14,9 @@ jobs:
 
     - name: Prepare site content
       run: |
-        mkdir output
-        mkdir output/${{ github.event.release.tag_name }}
-        cp -r *.html ru/ en/ output/${{ github.event.release.tag_name }}/
-        find output/${{ github.event.release.tag_name }} -name "*.html" -exec sed -i "s|/lab4/|/lab4/${{ github.event.release.tag_name }}/|g" {} \;
+        VER='${{ github.event.release.tag_name }}'
+        mkdir -p output/"$VER"
+        cp -r index.html ru en output/"$VER"/
 
         
     - name: Upload to Pages
