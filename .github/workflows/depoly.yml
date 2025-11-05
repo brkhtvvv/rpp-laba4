@@ -19,6 +19,7 @@ jobs:
         cp -r *.html ru/ en/ output/${{ github.event.release.tag_name }}/
         find output/${{ github.event.release.tag_name }} -name "*.html" -exec sed -i "s|/lab4/|/lab4/${{ github.event.release.tag_name }}/|g" {} \;
 
+        
     - name: Upload to Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
